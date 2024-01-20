@@ -39,7 +39,7 @@ class PokedexViewModel(private val pokedexRepository: PokedexRepository) : ViewM
     }
 
     /**
-     * Gets Pokemon information from the Mars API Retrofit service and updates the
+     * Gets Pokemon information from the API Retrofit service and updates the
      * [Pokemon] [List] [MutableList].
      */
     fun getPokemons() {

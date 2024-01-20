@@ -91,7 +91,7 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
 }
 
 /**
- * The home screen displaying photo grid.
+ * The home screen displaying Pokemon grid.
  */
 @Composable
 fun PokemonsGridScreen(
