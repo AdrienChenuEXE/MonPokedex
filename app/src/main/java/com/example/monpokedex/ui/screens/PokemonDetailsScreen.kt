@@ -37,7 +37,6 @@ import com.example.monpokedex.R
 import com.example.monpokedex.Services.PokemonTypeService
 import com.example.monpokedex.model.Pokemon
 
-
 @Composable
 fun PokemonDetailsScreen(
     pokemon: Pokemon,
@@ -73,7 +72,7 @@ fun PokemonDetails(
         modifier = Modifier
             .background(typeColor)
     ){
-        // Ligne pour le nom et l'id du pokemon
+        // Row for Pokemon name and Id
         Row (
             modifier = Modifier
                 .fillMaxWidth()
@@ -95,7 +94,7 @@ fun PokemonDetails(
             )
         }
 
-        // Ligne pour les types du pokemon
+        // Row for Pokemon Types
         Row(
             modifier = Modifier
                 .padding(horizontal = 20.dp)
@@ -117,7 +116,7 @@ fun PokemonDetails(
             }
         }
 
-        // Details du pokemon
+        // Column for Pokemon details
         Column(
             modifier = Modifier
                 .fillMaxHeight()
@@ -132,12 +131,12 @@ fun PokemonDetails(
                     .padding(horizontal = 20.dp)
                     .padding(top = 75.dp)
             ) {
+                // LazyColumn to be able to scroll in order to see all evolutions
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxHeight()
                         .fillMaxWidth()
                 ) {
-                    // Details du pokemon
                     item {
                         Text(
                             text = "Description",
@@ -159,7 +158,7 @@ fun PokemonDetails(
                                 .padding(top = 20.dp)
                         )
 
-                        // Evolution précédentes
+                        // Previous evolutions
                         if (pokemon.evolutions.before.isNotEmpty()) {
                             Row(
                                 modifier = Modifier
@@ -206,7 +205,7 @@ fun PokemonDetails(
                             }
                         }
 
-                        // Evolution Suivantes
+                        // Next evolutions
                         if (pokemon.evolutions.after.isNotEmpty()) {
                             Row(
                                 modifier = Modifier
@@ -255,126 +254,11 @@ fun PokemonDetails(
                         }
                     }
                 }
-                /*
-                Text(
-                    text = "Description",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    modifier = Modifier
-                        .padding(bottom = 15.dp)
-                )
-                Text(
-                    text = pokemon.description,
-                    textAlign = TextAlign.Justify
-                )
-                Text(
-                    text = "Chaîne d'évolutions",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    modifier = Modifier
-                        .padding(bottom = 15.dp)
-                        .padding(top = 20.dp)
-                )
-
-                // Evolution précédentes
-                if (pokemon.evolutions.before.isNotEmpty()) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceAround,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        pokemon.evolutions.before.forEach { evo ->
-                            Card(
-                                modifier = Modifier
-                                    .clip(shape = RoundedCornerShape(50.dp)),
-                            ) {
-                                Text(
-                                    text = "$evo",
-                                    modifier = Modifier
-                                        .background(typeColor)
-                                        .padding(5.dp)
-                                        .padding(horizontal = 10.dp),
-                                    color = Color.White
-                                )
-                            }
-                            Icon(
-                                imageVector = Icons.Default.ArrowForward,
-                                contentDescription = null,
-                                modifier = Modifier.size(24.dp)
-                            )
-                        }
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            AsyncImage(
-                                model = ImageRequest.Builder(context = LocalContext.current)
-                                    .data(pokemon.imgUrl)
-                                    .crossfade(true)
-                                    .build(),
-                                error = painterResource(R.drawable.ic_broken_image),
-                                placeholder = painterResource(R.drawable.loading_img),
-                                contentDescription = stringResource(R.string.pokedex),
-                                modifier = Modifier
-                                    .size(50.dp)
-                            )
-                            Text(text = pokemon.name)
-                        }
-                    }
-                }
-
-                // Evolution Suivantes
-                if (pokemon.evolutions.after.isNotEmpty()){
-                    Row (
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceAround,
-                        verticalAlignment = Alignment.CenterVertically
-                    ){
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            AsyncImage(
-                                model = ImageRequest.Builder(context = LocalContext.current)
-                                    .data(pokemon.imgUrl)
-                                    .crossfade(true)
-                                    .build(),
-                                error = painterResource(R.drawable.ic_broken_image),
-                                placeholder = painterResource(R.drawable.loading_img),
-                                contentDescription = stringResource(R.string.pokedex),
-                                modifier = Modifier
-                                    .size(50.dp)
-                            )
-                            Text(text = pokemon.name)
-                        }
-                        pokemon.evolutions.after.forEach { evo ->
-                            Icon(
-                                imageVector = Icons.Default.ArrowForward,
-                                contentDescription = null,
-                                modifier = Modifier.size(24.dp)
-                            )
-                            Card(
-                                modifier = Modifier
-                                    .clip(shape = RoundedCornerShape(50.dp)),
-                            ){
-                                Text(
-                                    text = "$evo",
-                                    modifier = Modifier
-                                        .background(typeColor)
-                                        .padding(5.dp)
-                                        .padding(horizontal = 10.dp),
-                                    color = Color.White
-                                )
-                            }
-                        }
-                    }
-                }
-                */
             }
         }
     }
 
-    // Image du pokemon
+    // Pokemon Image
     Box(
         modifier = Modifier,
     ){

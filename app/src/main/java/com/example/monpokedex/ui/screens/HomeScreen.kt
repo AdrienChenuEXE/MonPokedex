@@ -141,7 +141,7 @@ fun PokemonCard(
                 .fillMaxWidth()
                 .background(typeColor)
         ) {
-            // Première ligne avec texte aligné à droite
+            // Row for Pokemon Id display to the right
             Row(
                 modifier = Modifier.fillMaxWidth()
                     .padding(end = 20.dp)
@@ -156,7 +156,7 @@ fun PokemonCard(
                 )
             }
 
-            // Deuxième ligne avec texte aligné à gauche
+            // Row for Pokemon Name display to the left
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -170,14 +170,14 @@ fun PokemonCard(
                 )
             }
 
-            // Troisième ligne avec deux colonnes
+            // Row with to columns
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(20.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                // Colonne de gauche avec un texte
+                // Left column for Pokemon types
                 Column(
                     modifier = Modifier
                         .padding(top = 20.dp)
@@ -199,9 +199,8 @@ fun PokemonCard(
                     }
                 }
 
-                // Colonne de droite avec une image
+                // Right Column display Pokemon Image
                 Column {
-
                     AsyncImage(
                         model = ImageRequest.Builder(context = LocalContext.current)
                             .data(pokemon.imgUrl)
@@ -221,6 +220,9 @@ fun PokemonCard(
     }
 }
 
+/**
+ * Personalized composable for each Pokemon type with the name and the icon of the type
+ */
 @Composable
 fun TypeCard(
     type: String,

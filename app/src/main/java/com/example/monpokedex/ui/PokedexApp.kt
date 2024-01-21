@@ -51,6 +51,9 @@ fun PokedexApp(
         backStackEntry?.destination?.route ?: PokemonScreen.Start.name
     )
 
+    /**
+     *  Current Pokemon used tu be injected into PokemonDetailsScreen
+     */
     var currentPokemon: Pokemon? by remember { mutableStateOf(null) }
 
     Scaffold(
@@ -75,6 +78,9 @@ fun PokedexApp(
                     HomeScreen(
                         pokedexUiState = pokedexViewModel.pokedexUiState,
                         retryAction = pokedexViewModel::getPokemons,
+                        /**
+                         * If Pokemon Clicked, in the list, the pokemon is stored into currentPokemon variable
+                         */
                         onPokemonClicked = {
                             currentPokemon = it
                             navController.navigate(PokemonScreen.PokemonDetails.name)
